@@ -1,0 +1,116 @@
+@use "reset";
+@import "mixins";
+
+:root {
+
+  --Violet: hsl(257, 40%, 49%);
+  --Magenta: hsl(300, 69%, 71%);
+  --White: rgb(255, 255, 255);
+
+  --ff-title: 'Poppins', sans-serif;
+  --ff-body: 'Open Sans', sans-serif;
+}
+
+body {
+  color: var(--White);
+  font-family: var(--ff-body);
+  background: top center / 100% url(../images/bg-mobile.svg) no-repeat var(--Violet);
+
+  @include media {
+    background: top center / cover url(../images/bg-desktop.svg) no-repeat var(--Violet);
+  }
+}
+
+.container {
+  min-width: 250px;
+  margin: 0 auto;
+  padding: 2em;
+
+  @include media () {
+    max-width: 1000px;
+    @include flex (column, nowrap, space-between, flex-start, 0);
+  }
+}
+
+.logo {
+  margin-bottom: 6em;
+
+  &__img {
+    width: 10em;
+  }
+}
+
+.info {
+  margin-bottom: 6em;
+  @include flex (column, nowrap, center, center, 0);
+
+  @include media () {
+    @include flex (row, nowrap, center, flex-start, 2em);
+    margin-bottom: 2em;
+  }
+
+  &__banner {
+    margin-bottom: 5em;
+    width: 75vw;
+    min-width: 10em;
+
+    @include media () {
+      width: 50%;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    @include media () {
+      width: 50%;
+      text-align: start;
+    }
+  }
+
+  &__title {
+    font-family: var(--ff-title);
+    font-weight: 600;
+    font-size: 1.7em;
+    margin-bottom: 1em;
+  }
+
+  &__p {
+    margin-bottom: 2em;
+  }
+
+  &__btn {
+    padding: 1em 3em;
+    border-radius: 2em;
+    color: var(--Violet);
+    font-size: 1em;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--White);
+      background-color: var(--Magenta);
+    }
+  }
+}
+
+.footer {
+  margin-bottom: 4em;
+  @include flex (row, nowrap, center, center, 1.5em);
+
+  @include media () {
+    align-self: flex-end;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    width: 3em;
+    fill: var(--White);
+    cursor: pointer;
+    transition: fill .3s;
+
+    &:hover {
+      fill: var(--Magenta);
+    }
+  }
+}
